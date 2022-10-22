@@ -49,20 +49,29 @@ const deleteBook = async (req, res) => {
 }
 
 const updateBook = async (req, res) => {
+  const b_name = req.params.name;
+  const b_author = req.params.author;
+  const b_genre = req.params.genre;
   const b_id = req.params.id;
   //console.log(b_id)
-  res.render("updateBookList", {name: req.params.name, author: req.body.author, genre: req.body.genre, id: b_id})
+  
+  //res.redirect(`/updatebookInfo/${b_id}`)
+  res.render("updateBookList", {name: b_name, author: b_author, genre: b_genre, id: b_id})
+  
 }
 
 const updateBookInfo = async (req, res) => {
   console.log(req.params.id)
+  console.log(req.params.name)
+  console.log(req.params.author)
+  console.log(req.params.genre)
   const book = await bookModel.findByIdAndUpdate(req.params.id,{
     name: req.body.name,
     author: req.body.author,
     genre: req.body.genre,
   },
   {new: true})
-  res.render("books")
+  res.redirect("/book-list")
 }
 
 module.exports = { getBookList, getBook, postBook, deleteBook, updateBook, updateBookInfo };

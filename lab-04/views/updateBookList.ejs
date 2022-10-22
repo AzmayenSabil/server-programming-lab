@@ -15,14 +15,14 @@
     </style>
   </head>
   <body>
-    <form method="POST" action="http://localhost:3000/book-list/updateBookInfo/<%=id%>">
-        <label for="name">Book name: <%=name%></label><br />
-        <input type="text" id="name" name="name" /><br />
-        <label for="author">Author name:<%=author%></label><br />
-        <input type="text" id="author" name="author" /><br />
-        <label for="genre">Genre:<%=genre%></label><br />
-        <input type="text" id="genre" name="genre" /><br />
-        <input type="submit" value="Add book" />
+    <form method="POST" action="http://localhost:3000/book-list/updatebookInfo/<%=name%>/<%=author%>/<%=genre%>/<%=id%>">
+        <label for="name">Book name: </label><br />
+        <input type="text" id="name" name="name" value="<%=name%>"/><br />
+        <label for="author">Author name: </label><br />
+        <input type="text" id="author" name="author" value="<%=author%>"/><br />
+        <label for="genre">Genre: </label><br />
+        <input type="text" id="genre" name="genre" value="<%=genre%>"/><br />
+        <input type="submit" value="Update book" />
     </form>
 
   </body>
