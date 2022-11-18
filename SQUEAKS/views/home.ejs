@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SQUEAKS</title>
+    <style>
+      table, th, td {
+          border: 1px solid black;
+      }
+      th, td {
+          padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+      <form method="POST" action="http://localhost:3000">
+        <label for="Sender">Sender:</label><br />
+        <select name="sender" id="sender">
+          <option value="">Sender</option>
+          <% for(var count = 0; count < users.length; count++) { %>
+            <option value="<%= users[count].name %>"><%= users[count].name %></option>
+          <% } %>
+        </select>
+        <br>
+
+        <label for="Receiver">Receiver:</label><br />
+        <select name="receiver" id="receiver">
+          <option value="">Receiver</option>
+          <% for(var count = 0; count < users.length; count++) { %>
+            <option value="<%= users[count].name %>"><%= users[count].name %></option>
+          <% } %>
+        </select>
+        <br>
+
+        <label for="Text">Text:</label><br />
+        <input type="text" id="text" name="text" /><br />
+
+        <input type="submit" value="Send" />
+      </form>
+
+      <table>
+        <label for="User">Current user:</label><br />
+        <form method="POST" action="http://localhost:3000/findMessage"> 
+          <select name="user" id="user">
+            <option value="">User</option>
+              <% for(var count = 0; count < users.length; count++) { %>
+                <option value="<%= users[count].name %>"><%= users[count].name %></option>
+              <% } %>
+          </select>
+          <input type="submit" value="find" />
+        </form>
+        <br>
+        <tr>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Message</td>
+        </tr>
+
+        <%for(let i=0; i<messages.length; i++){%>
+            <tr>
+                <td><%=messages[i].sender%></td>
+                <td><%=messages[i].receiver%></td>
+                <td><%=messages[i].text%></td>
+            </tr>
+        <%}%>
+      </table>
+    </body>
+</html>
